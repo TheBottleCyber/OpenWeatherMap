@@ -48,12 +48,10 @@ namespace Example
             Console.WriteLine($"Data calculation time : {currentWeather.Date}");
             Console.WriteLine($"Coordinates of the city : {currentWeather.Location.Longitude}, {currentWeather.Location.Latitude}");
             Console.WriteLine($"Current state : {currentWeather.CurrentState}");
-            Console.WriteLine($"Air temperature : {currentWeather.Temperature.Current}{tempSymbol}");
+            Console.WriteLine($"Air temperature : {currentWeather.Temperature.Current}{tempSymbol} Min : {currentWeather.Temperature.Minimum}{tempSymbol} Max : {currentWeather.Temperature.Maximum}{tempSymbol}");
             Console.WriteLine($"Wind direction : {currentWeather.Wind.Cardinal}");
             Console.WriteLine($"Wind speed : {currentWeather.Wind.Speed} {windSymbol}");
             Console.WriteLine($"Humidity: {currentWeather.Humidity}%");
-            Console.WriteLine($"Min air temperature : {currentWeather.Temperature.Minimum}{tempSymbol}");
-            Console.WriteLine($"Max air temperature : {currentWeather.Temperature.Maximum}{tempSymbol}");
             Console.WriteLine($"Cloudiness : {currentWeather.Cloudiness}%");
             Console.WriteLine($"Sunrise time : {currentWeather.Sunrise}");
             Console.WriteLine($"Sunset time : {currentWeather.Sunset}");
