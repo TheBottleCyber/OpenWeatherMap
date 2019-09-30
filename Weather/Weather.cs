@@ -13,10 +13,12 @@ namespace OpenWeatherMap
         public string Cloudiness { get; }
         public DateTime Sunset { get; }
         public DateTime Sunrise { get; }
+        public string Pressure { get; }
+        public string Visibility { get; }
 
         public Weather(string city, string country, double unixDate, string longitude, string latitude, string currentState,
             string currentTemperature, string windSpeed, double windDegrees, string humidity, string minTemperature,
-            string maxTemperature, string cloudiness, double sunset, double sunrise)
+            string maxTemperature, string cloudiness, double sunset, double sunrise, string visibility, string pressure)
         {
             Date = UnixTimeStampToDateTime(unixDate);
             Location = new Location(city, country, longitude, latitude);
@@ -25,6 +27,8 @@ namespace OpenWeatherMap
             Humidity = humidity;
             Temperature = new Temperature(minTemperature, maxTemperature, currentTemperature);
             Cloudiness = cloudiness;
+            Visibility = visibility;
+            Pressure = pressure;
             Sunset = UnixTimeStampToDateTime(sunset);
             Sunrise = UnixTimeStampToDateTime(sunrise);
         }

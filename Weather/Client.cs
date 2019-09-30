@@ -18,6 +18,7 @@ namespace OpenWeatherMap
         }
 
         public string AppId { get; }
+        public HttpStatusCode ResponseCode { get; private set; }
 
         public Weather GetByCityName(string city, UnitsType unitsType = UnitsType.Metric)
         {
@@ -42,10 +43,13 @@ namespace OpenWeatherMap
             string cloudiness = jsonCurrentWeather.clouds.all;
             double unixSunriseDate = jsonCurrentWeather.sys.sunrise;
             double unixSunsetDate = jsonCurrentWeather.sys.sunset;
+            string pressure = jsonCurrentWeather.main.pressure;
+            string visibility = jsonCurrentWeather.visibility;
+            ResponseCode = jsonCurrentWeather.cod;
 
             return new Weather(city, country, unixDateTime, longitude, latitude, currentState,
                 currentTemperature, windSpeed, windDegrees, humidity, minTemperature,
-                maxTemperature, cloudiness, unixSunsetDate, unixSunriseDate);
+                maxTemperature, cloudiness, unixSunsetDate, unixSunriseDate, pressure, visibility);
         }
 
         public Weather GetByIPGeoLocation(UnitsType unitsType = UnitsType.Metric)

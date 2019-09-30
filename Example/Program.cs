@@ -60,6 +60,11 @@ namespace Example
             Console.WriteLine($"Cloudiness : {currentWeather.Cloudiness}%");
             Console.WriteLine($"Sunrise time : {currentWeather.Sunrise}");
             Console.WriteLine($"Sunset time : {currentWeather.Sunset}");
+            Console.WriteLine($"Visibility : {currentWeather.Pressure}");
+            Console.WriteLine($"Pressure : {currentWeather.Visibility}");
+
+            Console.WriteLine($"\nRequest Status Code : {client.ResponseCode}");
+            Console.ReadLine();
         }
     }
 }
