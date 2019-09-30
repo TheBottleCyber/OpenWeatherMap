@@ -2,9 +2,9 @@
 {
     public class Temperature
     {
-        public string Minimum { get; private set; }
-        public string Maximum { get; private set; }
-        public string Current { get; private set; }
+        public string Minimum { get; }
+        public string Maximum { get; }
+        public string Current { get; }
 
         public Temperature(string minimum, string maximum, string current)
         {

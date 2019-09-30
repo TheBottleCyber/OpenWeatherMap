@@ -2,10 +2,10 @@
 {
     public class Location
     {
-        public string City { get; private set; }
-        public string Country { get; private set; }
-        public string Longitude { get; private set; }
-        public string Latitude { get; private set; }
+        public string City { get; }
+        public string Country { get; }
+        public string Longitude { get; }
+        public string Latitude { get; }
 
         public Location(string city, string country, string longitude, string latitude)
         {

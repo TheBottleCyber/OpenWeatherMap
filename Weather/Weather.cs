@@ -4,15 +4,15 @@ namespace OpenWeatherMap
 {
     public class Weather
     {
-        public DateTime Date { get; private set; }
-        public Location Location { get; private set; }
-        public string CurrentState { get; private set; }
-        public Wind Wind { get; private set; }
-        public string Humidity { get; private set; }
-        public Temperature Temperature { get; private set; }
-        public string Cloudiness { get; private set; }
-        public DateTime Sunset { get; private set; }
-        public DateTime Sunrise { get; private set; }
+        public DateTime Date { get; }
+        public Location Location { get; }
+        public string CurrentState { get; }
+        public Wind Wind { get; }
+        public string Humidity { get; }
+        public Temperature Temperature { get; }
+        public string Cloudiness { get; }
+        public DateTime Sunset { get; }
+        public DateTime Sunrise { get; }
 
         public Weather(string city, string country, double unixDate, string longitude, string latitude, string currentState,
             string currentTemperature, string windSpeed, double windDegrees, string humidity, string minTemperature,
@@ -31,7 +31,7 @@ namespace OpenWeatherMap
 
         public static DateTime UnixTimeStampToDateTime(double unixTimeStamp)
         {
-            DateTime dtDateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
+            var dtDateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
             dtDateTime = dtDateTime.AddSeconds(unixTimeStamp).ToLocalTime();
             return dtDateTime;
         }

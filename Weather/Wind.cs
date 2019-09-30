@@ -4,9 +4,9 @@ namespace OpenWeatherMap
 {
     public class Wind
     {
-        public string Speed { get; private set; }
-        public string Cardinal { get; private set; }
-        public double Degress { get; private set; }
+        public string Speed { get; }
+        public string Cardinal { get; }
+        public double Degress { get; }
 
         public Wind(string speed, double degress)
         {

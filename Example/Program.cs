@@ -3,18 +3,23 @@ using OpenWeatherMap;
 
 namespace Example
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main()
         {
             var client = new OpenWeatherMapClient("d9ef62e1a9cdca288189217e245bf78d");
-            
-            string tempSymbol = "\u00B0C"; // °C
-            string windSymbol = "m/s";
-            Console.Write("Available measurement systems : \n\n1 - Default\n2 - Metric\n3 - Imperial\n\nEnter the number corresponding to the measurement system or leave blank to select Metric : ");
-            string inputUnitsType = Console.ReadLine();
 
-            UnitsType unitsType = UnitsType.Metric;
+            var tempSymbol = "\u00B0C"; // °C
+            var windSymbol = "m/s";
+            Console.Write("Available measurement systems : \n\n" +
+                          "1 - Default\n" +
+                          "2 - Metric\n" +
+                          "3 - Imperial\n\n" +
+                          "Enter the number corresponding to the measurement system or leave blank to select Metric : ");
+
+            var inputUnitsType = Console.ReadLine();
+
+            UnitsType unitsType;
             switch (inputUnitsType)
             {
                 case "1":
@@ -36,10 +41,10 @@ namespace Example
 
             Console.Clear();
             Console.Write("Enter a city or leave blank for autolocation : ");
-            string cityRequest = Console.ReadLine();
+            var cityRequest = Console.ReadLine();
             Console.Clear();
 
-            Weather currentWeather = string.IsNullOrEmpty(cityRequest) || string.IsNullOrWhiteSpace(cityRequest)
+            var currentWeather = string.IsNullOrEmpty(cityRequest) || string.IsNullOrWhiteSpace(cityRequest)
                 ? client.GetByIPGeoLocation(unitsType)
                 : client.GetByCityName(cityRequest, unitsType);
 
