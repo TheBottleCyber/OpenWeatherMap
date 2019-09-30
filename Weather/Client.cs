@@ -32,7 +32,7 @@ namespace OpenWeatherMap
             string country = jsonCurrentWeather.sys.country;
             string longitude = jsonCurrentWeather.coord.lon;
             string latitude = jsonCurrentWeather.coord.lat;
-            var currentState = Encoding.UTF8.GetString(Encoding.Default.GetBytes((string) jsonCurrentWeather.weather[0].description));
+            string currentState = Encoding.UTF8.GetString(Encoding.Default.GetBytes((string) jsonCurrentWeather.weather[0].description));
             string currentTemperature = jsonCurrentWeather.main.temp;
             string windSpeed = jsonCurrentWeather.wind.speed;
             double windDegrees = jsonCurrentWeather.wind.deg;
