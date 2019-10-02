@@ -18,12 +18,12 @@ namespace OpenWeatherMap
 
         public Weather(string city, string country, double unixDate, string longitude, string latitude, string currentState,
             string currentTemperature, string windSpeed, double windDegrees, string humidity, string minTemperature,
-            string maxTemperature, string cloudiness, double sunset, double sunrise, string visibility, string pressure)
+            string maxTemperature, string cloudiness, double sunset, double sunrise, string visibility, string pressure, Language language)
         {
             Date = UnixTimeStampToDateTime(unixDate);
             Location = new Location(city, country, longitude, latitude);
             CurrentState = currentState;
-            Wind = new Wind(windSpeed, windDegrees);
+            Wind = new Wind(windSpeed, windDegrees, language);
             Humidity = humidity;
             Temperature = new Temperature(minTemperature, maxTemperature, currentTemperature);
             Cloudiness = cloudiness;

@@ -49,7 +49,7 @@ namespace OpenWeatherMap
 
             return new Weather(city, country, unixDateTime, longitude, latitude, currentState,
                 currentTemperature, windSpeed, windDegrees, humidity, minTemperature,
-                maxTemperature, cloudiness, unixSunsetDate, unixSunriseDate, pressure, visibility);
+                maxTemperature, cloudiness, unixSunsetDate, unixSunriseDate, pressure, visibility, language);
         }
 
         public Weather GetByIPGeoLocation(UnitsType unitsType = UnitsType.Metric, Language language = Language.English)
