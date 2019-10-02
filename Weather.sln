@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenWeatherMap", "Weather\OpenWeatherMap.csproj", "{A760D808-50D0-480C-86C3-125E6740B954}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Example", "Example\Example.csproj", "{68AAA7E5-79D2-498F-B68C-DFD9C6B7C804}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A760D808-50D0-480C-86C3-125E6740B954} = {A760D808-50D0-480C-86C3-125E6740B954}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

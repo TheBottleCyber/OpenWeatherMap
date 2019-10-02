@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Net;
 using System.Text;
 using Newtonsoft.Json;
@@ -19,14 +20,14 @@ namespace OpenWeatherMap
             AppId = appId;
         }
 
-        public Weather GetByCityName(string city, UnitsType unitsType = UnitsType.Metric)
+        public Weather GetByCityName(string city, UnitsType unitsType = UnitsType.Metric, Language language = Language.English)
         {
             if (string.IsNullOrEmpty(city) || string.IsNullOrWhiteSpace(city))
                 throw new ArgumentException("Parameter cannot be null", nameof(city));
 
             dynamic jsonCurrentWeather =
                 JsonConvert.DeserializeObject(
-                    GetRequest(OpenWeatherMapApi + $"?appid={AppId}&q={city}&units={unitsType}"));
+                    GetRequest(OpenWeatherMapApi + $"?appid={AppId}&q={city}&units={unitsType}&lang={language.ToDescription()}"));
 
             double unixDateTime = jsonCurrentWeather.dt;
             string country = jsonCurrentWeather.sys.country;
@@ -51,10 +52,10 @@ namespace OpenWeatherMap
                 maxTemperature, cloudiness, unixSunsetDate, unixSunriseDate, pressure, visibility);
         }
 
-        public Weather GetByIPGeoLocation(UnitsType unitsType = UnitsType.Metric)
+        public Weather GetByIPGeoLocation(UnitsType unitsType = UnitsType.Metric, Language language = Language.English)
         {
             dynamic cityIP = JsonConvert.DeserializeObject(GetRequest("http://ip-api.com/json/"));
-            return GetByCityName((string) cityIP.city, unitsType);
+            return GetByCityName((string) cityIP.city, unitsType, language);
         }
 
         private string GetRequest(string url)
@@ -63,6 +64,15 @@ namespace OpenWeatherMap
             {
                 return webClient.DownloadString(url);
             }
+        }
+    }
+
+    public static class AttributesHelper
+    {
+        public static string ToDescription(this Enum value)
+        {
+            var da = (DescriptionAttribute[])(value.GetType().GetField(value.ToString())).GetCustomAttributes(typeof(DescriptionAttribute), false);
+            return da.Length > 0 ? da[0].Description : value.ToString();
         }
     }
 }

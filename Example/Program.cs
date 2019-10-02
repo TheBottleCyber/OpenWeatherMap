@@ -3,7 +3,7 @@ using OpenWeatherMap;
 
 namespace Example
 {
-    internal class Program
+    internal static class Program
     {
         private static void Main()
         {
