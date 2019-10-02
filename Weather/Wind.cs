@@ -15,9 +15,10 @@ namespace OpenWeatherMap
             Cardinal = DegreesToCardinal(degress);
         }
 
-        public static string DegreesToCardinal(double degrees)
+        private static string DegreesToCardinal(double degrees)
         {
             string[] caridnals = { "North", "North-East", "East", "South-East", "South", "South-West", "West", "North-West", "North" };
+            // TODO: make russian translate
             //string[] caridnals = { "Северный", "Северо-Восточный", "Восточный", "Южно-Восточный", "Южный", "Южно-Западный", "Западный", "Северно-Западный", "Северный" };
             return caridnals[(int)Math.Round(degrees % 360 / 45)];
         }

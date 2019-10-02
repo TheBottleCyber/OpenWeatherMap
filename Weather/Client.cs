@@ -7,7 +7,9 @@ namespace OpenWeatherMap
 {
     public class OpenWeatherMapClient
     {
-        private readonly string OpenWeatherMapApi = "http://api.openweathermap.org/data/2.5/weather";
+        public string AppId { get; }
+        public HttpStatusCode ResponseCode { get; private set; }
+        private const string OpenWeatherMapApi = "http://api.openweathermap.org/data/2.5/weather";
 
         public OpenWeatherMapClient(string appId)
         {
@@ -16,9 +18,6 @@ namespace OpenWeatherMap
 
             AppId = appId;
         }
-
-        public string AppId { get; }
-        public HttpStatusCode ResponseCode { get; private set; }
 
         public Weather GetByCityName(string city, UnitsType unitsType = UnitsType.Metric)
         {
